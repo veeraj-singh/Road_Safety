@@ -15,19 +15,20 @@ function speed(lat1, lon1, t1, lat2, lon2, t2) {
 
   const d = R * c;
   //console.log(d/(t2-t1))
-  sp.innerHTML=`lat1 : ${lat1} , lon1 : ${lon1}<br>`
+  //sp.innerHTML=`lat1 : ${lat1} , lon1 : ${lon1}<br>`
   sp.innerHTML+=`lat2 : ${lat2} , lon2 : ${lon2}<br>`
   sp.innerHTML+=`Speed : ${d/(t2-t1)}<br>`
 }
 
 function firstGeolocationSuccess(position1) {
-    let t1=Date.now()/1000;
+    let t1=Date.now();
     //console.log(position1.coords.latitude,position1.coords.longitude)
     navigator.geolocation.watchPosition(
       function (position2) {
-        let t2=Date.now()/1000;
+        let t2=Date.now();
+        sp.innerHTML=`time : ${new Date().toTimeString()}<br>`
         //console.log(position2.coords.latitude,position2.coords.longitude)
-        speed(position1.coords.latitude, position1.coords.longitude, t1, position2.coords.latitude, position2.coords.longitude, t2);
+        speed(position1.coords.latitude, position1.coords.longitude, t1/1000, position2.coords.latitude, position2.coords.longitude, t2/1000);
         //bearing(position1.coords.latitude, position1.coords.longitude, position2.coords.latitude, position2.coords.longitude);
       })
   }
