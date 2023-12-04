@@ -55,5 +55,5 @@ if (isIOS) {
 
 function handler(e) {
     compass = e.webkitCompassHeading || Math.abs(e.alpha - 360);
-    cp.innerHTML=`Bearing : ${compass}`
+    cp.innerHTML=`Bearing : ${compass.toFixed()}`
  }
